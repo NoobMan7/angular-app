@@ -1,0 +1,50 @@
+<div class="header">
+  <div class="d-flex justify-content-end align-items-center" style="padding-right: 20px;"> 
+     
+    <select class="sort-select">
+        <option value="" selected> Select Exercise Type </option>
+        <option value="chest">Chest</option>
+        <option value="back">Back</option>
+        <option value="legs">Legs</option>
+        <option value="arms">Arms</option>
+    </select>
+        
+    <button class="btn btn-primary w-40 openModal" (click)="openModal()">Add Note +</button>
+  </div>
+    <div style="max-height: 80vh; overflow-y: auto;"> 
+    <app-exercise-table [exercises]="exercises"></app-exercise-table>
+  </div>
+</div>
+
+<!-- Modal Structure -->
+<div class="modal" [ngClass]="{ 'show': isModalOpen }">
+  <div class="modal-content">
+    <div class="modal-head">
+      <h2>Exercise Form</h2>
+      <span id="close-popup" (click)="closeModal()">&#x2715;</span>
+    </div>
+    <form [formGroup]="exerciseForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="exercise-name">Exercise Name:</label>
+        <input id="exercise-name" formControlName="exerciseName" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="set-count">Number of Sets:</label>
+        <input id="set-count" type="number" min="1" (input)="onSetCountChange($event)" class="form-control" required>
+      </div>
+
+      <div formArrayName="sets" *ngFor="let set of sets.controls; let i = index" class="set">
+        <div [formGroupName]="i" class="set-group">
+          <label>Set {{ i + 1 }}</label>
+          <input formControlName="setNumber" type="hidden">
+          <input formControlName="repCount" placeholder="Rep Count" class="form-control" type="number" min="1" required>
+          <input formControlName="weight" placeholder="Weight in kg" class="form-control" type="number" min="0" required>
+        </div>
+      </div>
+
+      <button type="submit" class="submitbtn">Submit</button>
+    </form>
+  </div>
+</div>
+

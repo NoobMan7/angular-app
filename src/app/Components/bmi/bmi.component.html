@@ -1,0 +1,46 @@
+<div class="header">
+        
+    <button class="btn btn-primary w-40 openModal" style="align-self: center;" (click)="openModal()">Calculate BMI</button>
+    
+
+</div>
+
+
+<div *ngIf="bmiResult" class="result">
+    <h3>BMI Result</h3>
+    <p>Your BMI: {{ bmiResult.toFixed(1) }}</p>
+    <p>Interpretation: {{ bmiInterpretation }}</p>
+</div>
+
+<div class="modal" [ngClass]="{ 'show': isModalOpen }">
+    <div class="modal-content">
+      <div class="modal-head">
+        <h2>Calculate BMI</h2>
+        <span id="close-popup" (click)="closeModal()">&#x2715;</span>
+      </div>
+      <form (ngSubmit)="calculateBMI()">
+        <div class="form-group">
+            <label for="height">Height (cm):</label>
+            <input type="number" class="form-control" id="height" name="height" [(ngModel)]="height" required>
+          </div>
+      
+          <div class="form-group">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" class="form-control" id="weight" name="weight" [(ngModel)]="weight" required>
+          </div>
+      
+          <div class="form-group">
+            <label>Gender:</label><br>
+            <label class="radio-inline">
+              <input type="radio" name="gender" [(ngModel)]="gender" value="male" required> Male
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="gender" [(ngModel)]="gender" value="female"> Female
+            </label>
+          </div>
+        <button type="submit" class="submitbtn">Submit</button>
+      </form>
+    </div>
+  </div>
+  
+  

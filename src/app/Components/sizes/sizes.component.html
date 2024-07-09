@@ -1,0 +1,50 @@
+<div class="header">
+    <select class="sort-select" (change)="showResult($event)">
+        <option value="" selected> Select Body Part </option>
+        <option value="chest">Chest</option>
+        <option value="back">Back</option>
+        <option value="legs">Legs</option>
+        <option value="arms">Arms</option>
+    </select>
+        
+    <button class="btn btn-primary w-40 openModal mx-2" (click)="openModal()">Add +</button>
+    
+
+</div>
+
+<!-- Modal Structure -->
+<div class="modal" [ngClass]="{ 'show': isModalOpen }">
+  <div class="modal-content">
+    <div class="modal-head">
+      <h2>Add Body Measurements</h2>
+      <span id="close-popup" (click)="closeModal()">&#x2715;</span>
+    </div>
+    <form [formGroup]="sizesForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="chest">Chest:</label>
+        <input id="chest" formControlName="chest" type="number" class="form-control" required> 
+
+        <label for="waist">Waist:</label>
+        <input id="waist" formControlName="waist" type="number" class="form-control" required>
+
+        <label for="arms">Arms:</label>
+        <input id="arms" formControlName="arms" type="number" class="form-control" required>
+
+        <label for="thigh">thigh:</label>
+        <input id="thigh" formControlName="thigh" type="number" class="form-control" required>
+
+        <label for="height">Height:</label>
+        <input id="height" formControlName="height" type="number" class="form-control" required>
+
+        <label for="shoulderWidth">Shoulder:</label>
+        <input id="shoulderWidth" formControlName="shoulderWidth" type="number" class="form-control" required>
+        <label for="weight">Weight:</label>
+        <input id="weight" formControlName="weight" type="number" class="form-control" required>
+
+      </div>
+      <span class="text-danger">**All Sizes should be in cm</span>
+      <button type="submit" class="submitbtn">Submit</button>
+    </form>
+  </div>
+</div>
+

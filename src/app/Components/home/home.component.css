@@ -1,0 +1,26 @@
+input.form-control {
+    width: 100%;
+  }
+  /* Define a custom maximum width for the search bar */
+.search-container {
+    max-width: 100%;
+  }
+  
+  @media (min-width: 576px) {
+    .search-container {
+      max-width: 300px; /* Adjust for small devices */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .search-container {
+      max-width: 400px; /* Adjust for medium devices */
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .search-container {
+      max-width: 600px; /* Adjust for large devices */
+    }
+  }
+  

@@ -1,0 +1,22 @@
+<div *ngFor="let exercise of exercises" class="exercise-card">
+    <h3>{{ exercise.exerciseName }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Set #</th>
+          <th>Reps</th>
+          <th>Weight</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let set of exercise.sets">
+          <td>{{ set.setNumber }}</td>
+          <td>{{ set.repCount }}</td>
+          <td>{{ set.weight }}</td>
+          <td>{{ exercise.date | date: 'MM/dd/yyyy'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

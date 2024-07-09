@@ -1,0 +1,30 @@
+.exercise-card {
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .exercise-card h3 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .exercise-card table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .exercise-card th,
+  .exercise-card td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .exercise-card th {
+    background-color: #f4f4f4;
+    color: #555;
+  }
+  
