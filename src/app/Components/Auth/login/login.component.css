@@ -1,0 +1,295 @@
+/* styles.css */
+  
+  .container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .background-svg {
+    flex: 1;
+    background: url('https://img.freepik.com/free-vector/man-taking-break-from-work_23-2148508516.jpg?t=st=1720601925~exp=1720605525~hmac=511192ccd8484625ca637a09e36bdb87580f0459244f2852c729baa8974996b9&w=740') no-repeat center center;
+    background-size: cover;
+  }
+  
+  .login-form-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+  }
+  
+  .login-form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .login-form h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #666;
+  }
+  
+  .form-group input, select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .forgot-password {
+    text-align: right;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+  
+  .forgot-password a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .forgot-password a:hover {
+    text-decoration: underline;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .google-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #db4437;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+  }
+  
+  .google-btn:hover {
+    background-color: #c23321;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .background-svg, .login-form-container {
+      flex: none;
+      width: 100%;
+      height: 50vh;
+    }
+  
+    .login-form {
+      max-width: 90%;
+    }
+  }
+  
+
+
+
+  /* // forgot-password modal styles */
+
+  /* Modal Overlay */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 60px;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal.show {
+    display: flex;
+    opacity: 1;
+  }
+  
+  .modal.hide {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid #ddd;
+    width: 50%;
+    max-width: 500px;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+  
+  .modal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .modal.hide .modal-content {
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+  
+
+/* Modal Header */
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-head h2 {
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.5em;
+}
+
+#close-popup {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 8px;
+  background-color: rgb(242, 250, 250);
+  margin-right: 120px;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+.openModal {
+  display: block;
+  width: 10%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-right: 26px;
+  background-color: #eeebeb;
+  border-radius: 5px;
+  border: 1px solid  #c3c3c3;
+}
+button:hover {
+  background-color: #0056b3;
+}
+
+.submitbtn {
+  display: block;
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+/* // user role select stylings */
+
+.main-card {
+  background-color: #faf6f6;
+  color: #333;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  width: 500px; /* Adjust width as per your need */
+  margin: 250px auto;  /* Centers the card vertically and horizontally */
+  text-align: center;
+  height: 250px;
+  &:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15), 0 8px 28px rgba(0, 0, 0, 0.15);
+  }
+
+  h2 {
+    color: #333;
+    margin-bottom: 40px;
+  }
+
+  .role-card-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+  }
+
+  .role-card {
+    background-color: #fff;
+    color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    width: 180px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15), 0 8px 28px rgba(0, 0, 0, 0.15);
+    }
+
+    h3 {
+      font-size: 1.3rem;
+    }
+  }
+}

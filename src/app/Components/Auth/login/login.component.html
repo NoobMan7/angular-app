@@ -1,0 +1,122 @@
+<!-- app.component.html -->
+<div class="container" *ngIf="roleSelected">
+    <div class="background-svg">
+      <!-- Background SVG -->
+    </div>
+    <div *ngIf="newUser; else loginForm" class="login-form-container">
+      <form class="login-form" (ngSubmit)="signUp()">
+        <h2>Sign Up</h2>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" [(ngModel)]="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" [(ngModel)]="password" name="password" required>
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" [(ngModel)]="confirmPassword" name="confirm-password" required>
+        </div>
+        <div *ngIf="!this.roleSelected" style=" text-align: right;
+    margin-bottom: 1rem; color: red; font-size: small; cursor: default;">
+          <a>**Role must be selected</a>
+      </div>
+        <div class="forgot-password" (click)="newUserToggle()">
+            <a >Already a User?</a>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+        <button type="button" class="google-btn" (click)="googleSignup()">Sign Up with Google</button>
+      </form>
+    </div>
+    <ng-template #loginForm>
+      <div class="login-form-container">
+        <form class="login-form" (ngSubmit)="login()">
+          <h2>Login</h2>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" [(ngModel)]="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" [(ngModel)]="password" name="password" required>
+          </div>
+          <div class="forgot-password" (click)="openModal()">
+            <a>Forgot Password?</a>
+          </div>
+          <div class="forgot-password">
+            <a (click)="newUserToggle()">New User?</a>
+          </div>
+          <button type="submit" class="submit-btn">Submit</button>
+          <button type="button" class="google-btn" (click)="googleLogin()">Sign Up with Google</button>
+        </form>
+      </div>
+    </ng-template>
+  </div>
+  
+
+  <!-- // forgot password ngModel -->
+
+<!-- Modal Structure -->
+<div class="modal" [ngClass]="{ 'show': isModalOpen }">
+  <div class="modal-content">
+    <div class="modal-head">
+      <h2>Reset Password</h2>
+      <span id="close-popup" (click)="closeModal()">&#x2715;</span>
+    </div>
+    <form (ngSubmit)="resetPassword()">
+       
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" [(ngModel)]="forgotPasswordEmail" name="email" required>
+      </div>
+      <button type="submit" class="submit-btn">Reset Password</button>
+    </form>
+  </div>
+</div>
+
+
+<!-- 
+  <div class="forgot-password-container">
+    <form >
+      <h2>Reset Password</h2>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" [(ngModel)]="email" name="email" required>
+      </div>
+      <button type="submit" class="submit-btn">Reset Password</button>
+    </form>
+  </div>
+   -->
+   <!-- <div *ngIf="!roleSelected">
+    <div class="background-svg">
+    </div>
+    
+    <div class="role-selection">
+      <h2>Select Your Role</h2>
+      <div class="role-card-container">
+        <div class="role-card" (click)="selectRole('user')">
+          <h3>Gym User</h3>
+        </div>
+        <div class="role-card" (click)="selectRole('owner')">
+          <h3>Gym Owner</h3>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="container" *ngIf="!roleSelected">
+    <div class="background-svg">
+      <!-- Background SVG -->
+    </div>
+    <div class="main-card">
+      <h2>Select Your Role</h2>
+      <div class="role-card-container">
+        <div class="role-card" (click)="selectRole('Gym User')">
+          <h3>Gym User</h3>
+        </div>
+        <div class="role-card" (click)="selectRole('Gym Owner')">
+          <h3>Gym Owner</h3>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,16 +1,67 @@
 <div class="header">
+  <div class="month-selector">
+    <input [(ngModel)]="month" type="month" id="month" (change)="onMonthChange($event)" />
+  </div>
+ 
     <select class="sort-select" (change)="showResult($event)">
-        <option value="" selected> Select Body Part </option>
+        <option value="" disabled selected> Select Body Part </option>
         <option value="chest">Chest</option>
-        <option value="back">Back</option>
-        <option value="legs">Legs</option>
+        <option value="waist">Back</option>
+        <option value="thigh">Legs</option>
         <option value="arms">Arms</option>
     </select>
-        
+    <button class="btn btn-primary w-40 openModal mx-2" (click)="getData()">Get Data</button>  
     <button class="btn btn-primary w-40 openModal mx-2" (click)="openModal()">Add +</button>
     
+ 
+</div>
+
+
+<div style="max-height: 80vh; overflow-y: hidden;"> 
+  <!-- measurement-list.component.html -->
+<div *ngIf="measurements.length > 0">
+<table>
+<thead>
+  <tr>
+    <th>Date Measured</th>
+    <th>Arms</th>
+    <th>Chest</th>
+    <th>Height</th>
+    <th>Shoulder Width</th>
+    <th>Thigh</th>
+    <th>Waist</th>
+    <th>Weight</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let measurement of measurements">
+    <td>{{ measurement.dateMeasured | date }}</td>
+    <td>{{ measurement.arms }}</td>
+    <td>{{ measurement.chest }}</td>
+    <td>{{ measurement.height }}</td>
+    <td>{{ measurement.shoulderWidth }}</td>
+    <td>{{ measurement.thigh }}</td>
+    <td>{{ measurement.waist }}</td>
+    <td>{{ measurement.weight }}</td>
+  </tr>
+</tbody>
+</table>
+
+<div *ngIf="isBodyPartSelected">
+ 
+  <app-sizechart></app-sizechart>
+</div>
 
 </div>
+<!-- <div *ngIf="!isBodyPartSelected">
+No measurements available.
+</div> -->
+
+</div>
+
+
+
+
 
 <!-- Modal Structure -->
 <div class="modal" [ngClass]="{ 'show': isModalOpen }">

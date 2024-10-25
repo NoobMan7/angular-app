@@ -1,0 +1,82 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3>Clients</h3>
+      <div class="d-flex align-items-center">
+        <input type="text" class="form-control mr-2" placeholder="Search..." [(ngModel)]="searchText" (input)="searchClients()" />
+        <select class="form-control mr-2" [(ngModel)]="sortOption" (change)="sortClients()">
+          <option value="name">Sort by Name</option>
+          <option value="joiningDate">Sort by Joining Date</option>
+        </select>
+        <button class="btn btn-primary" (click)="openModal()">Add Client</button>
+      </div>
+    </div>
+  
+    <div class="list-group">
+      <div class="list-group-item" *ngFor="let client of filteredClients">
+        <div class="row align-items-center">
+          <div class="col-md-3">
+            <h5>{{ client.name }}</h5>
+          </div>
+          <div class="col-md-3">
+            <p>{{ client.plan }}</p>
+          </div>
+          <div class="col-md-2">
+            <p>{{ client.phone }}</p>
+          </div>
+          <div class="col-md-2">
+            <p>{{ client.joiningDate | date }}</p>
+          </div>
+          <div class="col-md-2 text-right">
+            <i class="fa fa-edit text-primary mx-2" (click)="editClient(client)"></i>
+            <i class="fa fa-trash text-danger" (click)="deleteClient(client.id)"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  <!-- Modal Structure -->
+<div class="modal" [ngClass]="{ 'show': isModalOpen }">
+  <div class="modal-content">
+    <div class="modal-head">
+      <h2>Add Client</h2>
+      <span id="close-popup" (click)="closeModal()">&#x2715;</span>
+    </div>
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit(clientForm.value)">
+      <div class="form-group">
+        <label for="exercise-name">Name:</label>
+        <input id="exercise-name" formControlName="name" type="text" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="exercise-name">Email:</label>
+        <input id="exercise-name" formControlName="email" class="form-control" type="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input id="phone" formControlName="phone" class="form-control" type="number" required>
+      </div>
+      <div class="form-group">
+        <label for="joining-date">Joining Date:</label>
+        <input id="joining-date" formControlName="joiningDate" class="form-control" type="date" required>
+      </div>
+      <div class="form-group">
+        <select class="plan-select" style="width: 100%;" formControlName="plan">
+          <option  [ngValue]="null"selected> Select Plan Type </option>
+          <option  [ngValue]="1">1 Month</option>
+          <option [ngValue]="3">3 Month</option>
+          <option  [ngValue]="6">6 Month</option>
+          <option  [ngValue]="12">12 Month</option>
+      </select>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Create Password:</label>
+        <input id="password" formControlName="password" class="form-control" type="password" required>
+      </div>
+
+      <button type="submit" style="width: 100%;" class="submitbtn">Create Account</button>
+    </form>
+  </div>
+</div>

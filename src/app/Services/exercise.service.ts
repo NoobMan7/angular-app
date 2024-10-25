@@ -26,10 +26,10 @@ export class ExerciseService {
   }
 
   updateExercise(id: number, exercise: Exercise): Observable<Exercise> {
-    return this.http.put<Exercise>(`${this.apiUrl}/${id}`, exercise);
+    return this.http.put<Exercise>(`${this.apiUrl}/Exercise/${id}`, exercise);
   }
 
   deleteExercise(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/Exercise/${id}`);
   }
 }

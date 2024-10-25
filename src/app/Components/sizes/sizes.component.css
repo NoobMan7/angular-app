@@ -118,3 +118,13 @@
     cursor: pointer;
     width: 100%;
   }
+  .month-selector input{
+    /* margin-bottom: 20px; */
+    padding: 10px;
+    margin-top: 10px;
+    margin-right: 26px;
+    background-color: #eeebeb;
+    border-radius: 5px;
+    border: 1px solid  #c3c3c3;
+  }
+  

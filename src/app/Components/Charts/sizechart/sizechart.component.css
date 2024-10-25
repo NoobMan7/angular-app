@@ -1,0 +1,6 @@
+.chart-container {
+    height: 400px; /* Adjust the height as needed */
+    width: 100%;   /* Ensure the chart takes the full width */
+    max-height: 400px; /* Set a max height if needed */
+    overflow: hidden;  /* Hide any overflow */
+  }

@@ -31,3 +31,9 @@
 .active{
   border-bottom: 2px solid greenyellow;
 }
+@media (max-width: 900px) {
+  .hide-on-small {
+    font-size: small;
+    /* display: none; */
+  }
+}

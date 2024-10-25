@@ -1,0 +1,268 @@
+.addbtn {
+    display: block;
+    padding: 10px 32px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+.program-name {
+    width: 100%;
+    align-items: center;
+}
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-height: 600px;
+    overflow-y: scroll;
+  }
+  
+  .card {
+    background-color: #fff;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, z-index 0.3s ease;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
+    height: fit-content;
+    
+    &:hover {
+      /* transform: translateY(-5px); */
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+  
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+  
+    p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+  
+    .action-button {
+      background-color: #000;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #444;
+      }
+    }
+  }
+  /* .card {
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, z-index 0.3s ease;
+    position: relative;
+    z-index: 1;
+  } */
+  
+  .card.expanded {
+    transform: scale(1);
+    z-index: 10;
+    position: relative;
+  }
+  .card:not(.expanded) {
+    z-index: 1;
+  }
+  .icon-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .icon-wrapper .tooltip {
+    visibility: hidden;
+    position: absolute;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -30px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s, visibility 0.5s;
+    transition-delay: 1s;
+  }
+  
+  .icon-wrapper:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  
+  /* Show actions on card hover */
+  .card:hover .actions {
+    display: flex;
+  }
+
+  .action-button {
+    background-color: #28a745;
+  }
+  
+  .action-button:hover {
+    background-color: #218838;
+  }
+/* Container for the dropdown form */
+.dropdown-form {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #fff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    border: 1px solid #ddd; /* Light border */
+    position: relative; /* Ensure it flows with the card */
+    z-index: 10; /* Elevate above other elements */
+    width: 100%; /* Full width to match card */
+  }
+  
+  /* Form heading */
+  .dropdown-form h4 {
+    margin-top: 0; /* Remove top margin */
+    font-size: 18px; /* Size the heading */
+    font-weight: 600; /* Make it bold */
+    color: #333; /* Dark gray text */
+  }
+  
+  /* Input field */
+  .dropdown-form input[type="text"] {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px; /* Padding inside input */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+    margin-bottom: 10px; /* Space between input and buttons */
+    font-size: 14px; /* Font size */
+    transition: border-color 0.3s ease; /* Smooth border color change */
+  }
+  
+  /* Input focus effect */
+  .dropdown-form input[type="text"]:focus {
+    border-color: #007bff; /* Border turns blue on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  /* Add button */
+  .dropdown-form button[type="submit"] {
+    background-color: #007bff; /* Blue background */
+    color: #fff; /* White text */
+    padding: 10px 15px; /* Padding for button */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 14px; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+    margin-right: 10px; /* Space between buttons */
+  }
+  
+  /* Add button hover */
+  .dropdown-form button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* Cancel button */
+  .dropdown-form button[type="button"] {
+    background-color: #6c757d; /* Gray background */
+    color: #fff; /* White text */
+    padding: 10px 15px; /* Padding for button */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 14px; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  /* Cancel button hover */
+  .dropdown-form button[type="button"]:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+  }
+  
+/* Workout list styling */
+.workout-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .workout-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* Icons for actions (edit, delete) */
+  .workout-item .actions {
+    display: flex;
+    gap: 6px;
+  }
+  
+  .workout-item .actions i {
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #007bff;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .workout-item .actions i:hover {
+    color: #0056b3;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .workout-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .workout-item .actions {
+      margin-top: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+  
+    .workout-item .actions i {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .workout-item {
+      font-size: 0.9rem;
+    }
+  
+    .workout-item .actions i {
+      font-size: 1.3rem;
+    }
+  }
+  
+  /* Input for editing workout */
+  input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+ 

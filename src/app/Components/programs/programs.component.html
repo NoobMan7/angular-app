@@ -1,0 +1,103 @@
+<div class="container d-flex justify-content-end">
+  <div>
+    <button type="button" class="btn btn-primary addbtn" (click)="openModal()">Add Program</button>
+
+  </div>
+
+  <!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div *ngIf="isModalOpen" class="modal fade show" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="display: block;">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Add Workout Program</h5>
+          <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label for="program-name">Enter your program:</label>
+          <input id="program-name" class="program-name" [(ngModel)]="programName" required>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+          <button type="button" class="btn btn-primary" (click)="SaveProgram()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<div class="card-container">
+  <!-- <div class="card" *ngFor="let card of cards; let i = index" (mouseenter)="showActions(i)" (mouseleave)="hideActions(i)"> -->
+    <div class="card" *ngFor="let card of cards; let i = index" 
+       [class.expanded]="expandedCardIndex === i" 
+       (click)="expandCard(i)" (mouseenter)="showActions(i)" (mouseleave)="hideActions(i)">
+    <div class="d-flex justify-content-between">
+      <h3>{{ card.title }}</h3>
+          <!-- Actions (edit, delete) visible on hover -->
+    <div class="actions" *ngIf="hoveredCardIndex === i">
+      <div class="icon-wrapper">
+        <i class="fas fa-edit" style="color: green;" (click)="onEditCard(card)"></i>
+      </div>
+      <div class="icon-wrapper">
+        <i class="fas fa-trash-alt" style="color: red;" (click)="onDeleteCard(card)"></i>
+      </div>
+    </div>
+    </div>
+     
+    <p>Created On {{ card.date }}</p>
+
+    <!-- Display associated workouts -->
+    <div *ngIf="card.workouts && card.workouts.length > 0">
+      <h6>{{ card.workouts.length }} Workouts</h6>
+      <ul class="workout-list">
+        <!-- <li *ngFor="let workout of card.workouts; let workoutIndex = index">
+          <span>{{ workout }}</span>
+        </li> -->
+      </ul>
+    </div>
+    <div *ngIf="card.workouts.length == 0">
+      <h6>{{ card.workouts.length }} Workouts</h6>
+      
+    </div>
+
+    <!-- Button to open the form -->
+    <button *ngIf="!(selectedCardIndex === i)" class="action-button" (click)="toggleProgramAddbtn(i,card)">Add Workout</button>
+
+    <!-- Dropdown form for adding a workout -->
+    <div *ngIf="selectedCardIndex === i" class="dropdown-form">
+      <h4>Add Workout</h4>
+      <form (ngSubmit)="addWorkout(card)">
+        <input type="text" [(ngModel)]="newWorkout" name="newWorkout" placeholder="Enter workout name" required />
+        <button type="submit">Add</button>
+        <button type="button" (click)="toggleForm(i)">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit Program Modal -->
+
+<div *ngIf="isModalOpen && isEdit" class="modal fade show" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="display: block;">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Workout Program</h5>
+        <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="program-name">Enter your program:</label>
+        <input id="program-name" class="program-name" [(ngModel)]="editedProgramName" required>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="SaveEditedProgram()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
